@@ -9,12 +9,15 @@ import (
 // PRZYPISANIE WARTOSCI KIERUNKOM UMOZLIWIAJACE LATWIEJSZE ICH POZNIEJSZE SPRAWDZANIE
 const (
 	RIGHT = iota 			// 0
-	LEFT					// 1						
-	UP				  		// 2
-	DOWN				    // 3
+	LEFT				// 1						
+	UP				// 2
+	DOWN				// 3
 )
 
+// FUNKCJA GENERUJĄCA SPIRALE N - WIELKOSC, PX PRZESUNIECIE PRAWO/LEWO, PY - PRZESUNIECIE GORA/DOL 
 func generateUlumPrimes(n, px, py int) {
+	
+	// STWORZENIE PLANSZY JAKO SLICE
 	board := make([][]string, n)
 	for i := 0; i < n; i++ { 
 		board[i] = make([]string, n) 
@@ -26,7 +29,7 @@ func generateUlumPrimes(n, px, py int) {
 	// OKRESLENIE SRODKA PLANSZY
 	y := n / 2
 	var x int
-	// GDY PODAMY PARZYSTA WIELKOSC N PRZESUWAMY X JEDNA JEDNOSTKE W LEWO
+	// GDY PODAMY PARZYSTA WIELKOSC N PRZESUWAMY X JEDNA JEDNOSTKE W LEWO "WYSRODKOWANIE"
 	if (n % 2 == 0) { 
 		x = y - 1 
 	} else {
@@ -47,7 +50,7 @@ func generateUlumPrimes(n, px, py int) {
 		switch direction {
 		case RIGHT : 
 			if (board[y - 1][x] == "" && j > 1){ // JEZELI 1 MIEJSCE U GORY JEST WOLNE I J > 1 (CZYLI WSZYSTKIE POZA 1 RAZEM) 
-				direction = UP 					  // TO ZMIENIAMY KIERUNEK NA GORA
+				direction = UP 		     // TO ZMIENIAMY KIERUNEK NA GORA
 			}
 		case LEFT : 
 			if (x == 0 || board[y + 1][x] == "") { // JEZELI 1 MIEJSCE W DOL JEST WOLNE ALBO X = 0 ( NA KRAWEDZI ) TO ZMIENIAMY KIERUNEK NA DOL 
