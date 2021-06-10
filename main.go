@@ -1,3 +1,7 @@
+// AUTOR : Radosław Płocha 
+// Grupa 3
+// Spirala Ulama
+
 package main
 
 import (
